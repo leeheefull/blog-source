@@ -1,4 +1,4 @@
-package thread.ex01_basic;
+package com.leeheefull.thread.ex01_basic;
 
 public class ExtAndImplTest {
     public static void main(String[] args) {

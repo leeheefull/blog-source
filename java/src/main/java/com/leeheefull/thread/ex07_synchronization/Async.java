@@ -1,4 +1,4 @@
-package thread.ex07_synchronization;
+package com.leeheefull.thread.ex07_synchronization;
 
 public class Async {
     private static int globalIndex = 0;

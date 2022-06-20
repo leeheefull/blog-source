@@ -1,4 +1,4 @@
-package thread.ex04_time_wait;
+package com.leeheefull.thread.ex05_interrupt;
 
 public class Async {
     public static void main(String[] args) {
@@ -11,43 +11,34 @@ public class Async {
 
         Thread thread1 = new Thread(runnable);
         thread1.setName("Game");
-        Thread thread2 = new Thread(runnable);
-        thread2.setName("Memo");
 
         System.out.println(toStringThread(thread1) + " -> start 전");
-        System.out.println(toStringThread(thread2) + " -> start 전");
-
         thread1.start();
-        thread2.start();
-
         System.out.println(toStringThread(thread1) + " -> start 후");
-        System.out.println(toStringThread(thread2) + " -> start 후");
 
-        // 보조 thread가 종료 될 때까지 일시정지하고 종료되면 "35line~"을 실행
-        if (thread1.isAlive() && thread2.isAlive()) {
+        // 보조 thread가 2초 동안 일시정지하고 "26line~"을 실행
+        if (thread1.isAlive()) {
             try {
-                thread1.join();
-                thread2.join();
+                thread1.join(20);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            thread1.interrupt();
         }
+
         System.out.println(toStringThread(thread1) + " -> thread 종료");
-        System.out.println(toStringThread(thread2) + " -> thread 종료");
         System.out.println("############### Main thread end ###############");
     }
 
     private static void print() {
         Thread currentThread = Thread.currentThread();
 
-        for (int i = 1; i <= 10; i++) {
-            try {
-                Thread.sleep(50);
-                System.out.println(toStringThread(currentThread) + " -> " + i);
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        for (int i = 1; i <= 10000; i++) {
+            if (currentThread.isInterrupted()) {
+                System.out.println("############### Interrupt ###############");
+                return;
             }
+            System.out.println(toStringThread(currentThread) + " -> " + i);
         }
     }
 

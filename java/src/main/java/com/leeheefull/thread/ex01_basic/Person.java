@@ -1,4 +1,4 @@
-package thread.ex01_basic;
+package com.leeheefull.thread.ex01_basic;
 
 public class Person extends Animal implements Runnable {
     @Override

@@ -1,4 +1,4 @@
-package thread.ex02_async;
+package com.leeheefull.thread.ex02_async;
 
 public class Sync {
     public static void main(String[] args) {
