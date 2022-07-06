@@ -1,9 +1,9 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/batch_test
-    username: root
+    url: jdbc:h2:tcp://localhost/~/batch_test
+    username: leeheefull
     password:
+    driver-class-name: org.h2.Driver
   batch:
     jdbc:
       initialize-schema: always
